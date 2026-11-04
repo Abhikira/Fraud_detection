@@ -1,5 +1,3 @@
--- FraudWatch database schema for MySQL Workbench.
--- Safe to run more than once: existing databases and rows are not dropped.
 
 CREATE DATABASE IF NOT EXISTS fraud_db
     CHARACTER SET utf8mb4
@@ -131,11 +129,9 @@ CREATE TABLE IF NOT EXISTS comments (
         FOREIGN KEY (officer_id) REFERENCES officers (id) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Match the default categories inserted by the backend on startup.
 INSERT IGNORE INTO fraud_categories (name, description) VALUES
     ('Phishing', 'Email or SMS scams'),
     ('Credit Card Fraud', 'Unauthorized card usage'),
     ('Identity Theft', 'Stolen personal information');
 
--- Verify the created tables.
 SHOW TABLES;
